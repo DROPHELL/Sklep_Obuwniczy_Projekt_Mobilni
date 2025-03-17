@@ -1,1 +1,1 @@
-Platforma sprzedażowa dla sklepów obuwniczych
+## Platforma sprzedażowa dla sklepów obuwniczych
