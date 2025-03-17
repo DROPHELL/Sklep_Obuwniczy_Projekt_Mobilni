@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Обробка пошуку
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 Toast.makeText(this@MainActivity, "Searching for: $query", Toast.LENGTH_SHORT).show()
