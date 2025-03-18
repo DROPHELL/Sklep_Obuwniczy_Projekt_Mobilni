@@ -3,16 +3,18 @@ package com.example.website
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.website.database.DatabaseHelper
-import android.util.Patterns
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var db: DatabaseHelper
+    private lateinit var backButton: ImageButton
     private lateinit var firstNameEditText: EditText
     private lateinit var lastNameEditText: EditText
     private lateinit var emailEditText: EditText
@@ -25,11 +27,17 @@ class RegisterActivity : AppCompatActivity() {
 
         db = DatabaseHelper(this)
 
+        backButton = findViewById(R.id.backButton)
         firstNameEditText = findViewById(R.id.firstNameEditText)
         lastNameEditText = findViewById(R.id.lastNameEditText)
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
         registerButton = findViewById(R.id.registerButton)
+
+        // Кнопка "Назад"
+        backButton.setOnClickListener {
+            finish() // Закриває RegisterActivity і повертає на попередній екран (LoginActivity)
+        }
 
         registerButton.setOnClickListener {
             registerUser()
