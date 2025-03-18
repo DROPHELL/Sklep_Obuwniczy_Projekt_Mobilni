@@ -1,11 +1,13 @@
 package com.example.website
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,17 +25,27 @@ class MainActivity : AppCompatActivity() {
 
         // Перехід до CartActivity
         cartButton.setOnClickListener {
-            val intent = Intent(this, CartActivity::class.java)
-            startActivity(intent)
-        }
-        profileButton.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, CartActivity::class.java))
         }
 
+        // Перехід до ProfileActivity
+        profileButton.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
+        // Обробка пошуку
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Toast.makeText(this@MainActivity, "Searching for: $query", Toast.LENGTH_SHORT).show()
+                if (!query.isNullOrEmpty()) {
+                    Toast.makeText(this@MainActivity, "Searching for: $query", Toast.LENGTH_SHORT).show()
+
+                    // Закриваємо клавіатуру після введення пошуку
+                    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(searchView.windowToken, 0)
+
+                    // Закриваємо пошук
+                    searchView.clearFocus()
+                }
                 return true
             }
 

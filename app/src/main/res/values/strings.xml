@@ -12,4 +12,8 @@
     <string name="profile_desc">Profile</string>
     <string name="need_account_sign_up">Need an account? Sign Up</string>
     <string name="welcome_text">Welcome to BIDBoots!</string>
+    <string name="profile_name">Name: %s</string>
+    <string name="profile_email">Email Address: %s</string>
+    <string name="profile_shoe_size">Shoe Size: %s</string>
+    <string name="wallet_balance">Wallet Balance: $%.2f</string>
 </resources>

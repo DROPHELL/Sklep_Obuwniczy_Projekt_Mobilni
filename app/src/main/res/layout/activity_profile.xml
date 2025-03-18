@@ -16,13 +16,13 @@
         android:background="@null"
         android:contentDescription="Back"
         android:src="@drawable/ic_arrow_back"
-        app:tint="@color/black"/>
+        app:tint="@color/black" />
 
     <!-- Заголовок профілю -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Profile"
+        android:text="Personal Information"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -30,29 +30,52 @@
 
     <!-- Ім'я користувача -->
     <TextView
+        android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name: John Doe"
+        android:text="Name: Test"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:layout_marginBottom="16dp"/>
 
     <!-- Email користувача -->
     <TextView
+        android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email: johndoe@example.com"
+        android:text="Email Address: test@gmail.com"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Розмір взуття -->
+    <TextView
+        android:id="@+id/shoeSizeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shoe Size: Not Set"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:layout_marginBottom="24dp"/>
 
-    <!-- Кнопка для редагування профілю -->
+    <!-- Кнопка Wallet -->
     <Button
-        android:id="@+id/editProfileButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Profile"
+        android:id="@+id/walletButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Wallet"
         android:textColor="@color/white"
-        android:backgroundTint="@color/black"/>
+        android:backgroundTint="@color/black"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Кнопка Log Out -->
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Log Out"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/red"
+        android:layout_marginBottom="16dp"/>
 
 </LinearLayout>

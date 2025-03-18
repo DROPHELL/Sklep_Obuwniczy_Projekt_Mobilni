@@ -33,6 +33,16 @@
             android:name=".ProfileActivity"
             android:exported="true" />
 
+        <!-- Екран гаманця -->
+        <activity
+            android:name=".WalletActivity"
+            android:exported="true" />
+
+        <!-- Екран виходу з акаунта -->
+        <activity
+            android:name=".LogOutActivity"
+            android:exported="true" />
+
         <!-- Екран логіну -->
         <activity
             android:name=".LoginActivity"
