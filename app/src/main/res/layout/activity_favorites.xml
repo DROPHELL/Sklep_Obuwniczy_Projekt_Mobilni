@@ -6,28 +6,38 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- Основний контент -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_gravity="top">
+        android:padding="16dp">
 
-        <!-- Заголовок -->
+        <!-- Кнопка назад -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="@null"
+            android:contentDescription="Back"
+            android:tint="@color/black"
+            android:layout_gravity="start"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Текст-заголовок -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to BIDBoots!"
+            android:text="Favorites"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginBottom="12dp"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"/>
 
-        <!-- Список товарів -->
+        <!-- Тут можна вставити список улюблених товарів -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/productRecyclerView"
+            android:id="@+id/favoritesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"

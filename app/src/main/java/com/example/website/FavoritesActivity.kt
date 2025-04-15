@@ -6,19 +6,19 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class CartActivity : AppCompatActivity() {
+class FavoritesActivity : AppCompatActivity() {
 
     private lateinit var backButton: ImageButton
     private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cart)
+        setContentView(R.layout.activity_favorites)
 
         backButton = findViewById(R.id.backButton)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
 
-        // Назад → перехід до MainActivity з Home
+        // Назад → перехід до головного екрану з вкладкою Home
         backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("tab", "home")
@@ -26,7 +26,7 @@ class CartActivity : AppCompatActivity() {
             finish()
         }
 
-        // Обробка нижнього меню
+        // Нижнє меню
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_home -> {
@@ -41,12 +41,12 @@ class CartActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.menu_favorites -> {
-                    startActivity(Intent(this, FavoritesActivity::class.java))
+                R.id.menu_favorites -> true // вже тут
+                R.id.menu_cart -> {
+                    startActivity(Intent(this, CartActivity::class.java))
                     finish()
                     true
                 }
-                R.id.menu_cart -> true // вже тут
                 R.id.menu_profile -> {
                     startActivity(Intent(this, ProfileActivity::class.java))
                     finish()
@@ -56,7 +56,7 @@ class CartActivity : AppCompatActivity() {
             }
         }
 
-        // Виділяємо активну вкладку
-        bottomNavigationView.selectedItemId = R.id.menu_cart
+        // Виділяємо поточну вкладку
+        bottomNavigationView.selectedItemId = R.id.menu_favorites
     }
 }
