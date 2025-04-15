@@ -6,19 +6,21 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <!-- Основна частина -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="24dp"
+        android:layout_marginBottom="64dp">
 
         <!-- Рядок зі стрілкою і пошуком -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="16dp"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
 
             <ImageButton
                 android:id="@+id/backButton"
@@ -41,7 +43,7 @@
                 android:queryHint="Search for shoes..." />
         </LinearLayout>
 
-        <!-- Інший контент (якщо треба) -->
+        <!-- Можеш додати інший контент тут -->
 
     </LinearLayout>
 
@@ -55,4 +57,5 @@
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/black"
         app:itemTextColor="@color/black" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
