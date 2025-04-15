@@ -1,57 +1,55 @@
 package com.example.website
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var cartButton: ImageButton
-    private lateinit var profileButton: ImageButton
-    private lateinit var searchView: SearchView
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        cartButton = findViewById(R.id.cartButton)
-        profileButton = findViewById(R.id.profileButton)
-        searchView = findViewById(R.id.searchView)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
 
-        // Перехід до CartActivity
-        cartButton.setOnClickListener {
-            startActivity(Intent(this, CartActivity::class.java))
+        // Отримання вкладки (за замовчуванням Home)
+        val defaultTab = intent.getStringExtra("tab") ?: "home"
+        when (defaultTab) {
+            "home" -> bottomNavigationView.selectedItemId = R.id.menu_home
+            "search" -> bottomNavigationView.selectedItemId = R.id.menu_search
+            "favorites" -> bottomNavigationView.selectedItemId = R.id.menu_favorites
+            "cart" -> bottomNavigationView.selectedItemId = R.id.menu_cart
+            "profile" -> bottomNavigationView.selectedItemId = R.id.menu_profile
         }
 
-        // Перехід до ProfileActivity
-        profileButton.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
-
-        // Обробка пошуку
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (!query.isNullOrEmpty()) {
-                    Toast.makeText(this@MainActivity, "Searching for: $query", Toast.LENGTH_SHORT).show()
-
-                    // Закриваємо клавіатуру після введення пошуку
-                    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(searchView.windowToken, 0)
-
-                    // Закриваємо пошук
-                    searchView.clearFocus()
+        bottomNavigationView.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_home -> {
+                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                    true
                 }
-                return true
+                R.id.menu_search -> {
+                    startActivity(Intent(this, SearchActivity::class.java))
+                    true
+                }
+                R.id.menu_favorites -> {
+                    startActivity(Intent(this, FavoritesActivity::class.java))
+                    true
+                }
+                R.id.menu_cart -> {
+                    startActivity(Intent(this, CartActivity::class.java))
+                    true
+                }
+                R.id.menu_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+                else -> false
             }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
+        }
     }
 }

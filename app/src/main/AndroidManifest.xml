@@ -23,6 +23,11 @@
             android:name=".MainActivity"
             android:exported="true" />
 
+        <!-- Екран пошуку -->
+        <activity
+            android:name=".SearchActivity"
+            android:exported="true" />
+
         <!-- Екран кошика -->
         <activity
             android:name=".CartActivity"
@@ -37,6 +42,10 @@
         <activity
             android:name=".WalletActivity"
             android:exported="true" />
+        <activity
+            android:name=".FavoritesActivity"
+            android:exported="true"/>
+
 
         <!-- Екран виходу з акаунта -->
         <activity
