@@ -43,14 +43,12 @@
             android:name=".WalletActivity"
             android:exported="true" />
         <activity
+            android:name=".ProductDetailActivity"
+            android:exported="true" />
+
+        <activity
             android:name=".FavoritesActivity"
             android:exported="true"/>
-
-
-        <!-- Екран виходу з акаунта -->
-        <activity
-            android:name=".LogOutActivity"
-            android:exported="true" />
 
         <!-- Екран логіну -->
         <activity

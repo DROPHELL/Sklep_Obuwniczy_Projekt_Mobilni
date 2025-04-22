@@ -4,12 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FavoritesActivity : AppCompatActivity() {
 
     private lateinit var backButton: ImageButton
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: ProductAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,22 +21,23 @@ class FavoritesActivity : AppCompatActivity() {
 
         backButton = findViewById(R.id.backButton)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        recyclerView = findViewById(R.id.favoritesRecyclerView)
 
-        // Назад → перехід до головного екрану з вкладкою Home
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        updateAdapter()
+
+        // Назад → Home
         backButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("tab", "home")
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity::class.java).putExtra("tab", "home"))
             finish()
         }
 
         // Нижнє меню
-        bottomNavigationView.setOnItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
+        bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
                 R.id.menu_home -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.putExtra("tab", "home")
-                    startActivity(intent)
+                    startActivity(Intent(this, MainActivity::class.java).putExtra("tab", "home"))
                     finish()
                     true
                 }
@@ -41,7 +46,7 @@ class FavoritesActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.menu_favorites -> true // вже тут
+                R.id.menu_favorites -> true
                 R.id.menu_cart -> {
                     startActivity(Intent(this, CartActivity::class.java))
                     finish()
@@ -56,7 +61,17 @@ class FavoritesActivity : AppCompatActivity() {
             }
         }
 
-        // Виділяємо поточну вкладку
         bottomNavigationView.selectedItemId = R.id.menu_favorites
+    }
+
+    override fun onResume() {  // Оновлюємо список при поверненні
+        super.onResume()
+        updateAdapter()
+    }
+
+    private fun updateAdapter() {
+        val favoriteProducts = ProductData.getFavorites()
+        adapter = ProductAdapter(favoriteProducts, isFavoritesScreen = true)
+        recyclerView.adapter = adapter
     }
 }

@@ -4,12 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CartActivity : AppCompatActivity() {
 
     private lateinit var backButton: ImageButton
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: ProductAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,22 +21,27 @@ class CartActivity : AppCompatActivity() {
 
         backButton = findViewById(R.id.backButton)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        recyclerView = findViewById(R.id.cartRecyclerView)
 
-        // Назад → перехід до MainActivity з Home
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // ✅ Отримуємо лише товари, додані в корзину
+        val productsInCart = ProductData.getCart()
+        adapter = ProductAdapter(productsInCart, isCartScreen = true)
+        recyclerView.adapter = adapter
+
+
+        // Назад → до Home
         backButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("tab", "home")
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity::class.java).putExtra("tab", "home"))
             finish()
         }
 
-        // Обробка нижнього меню
-        bottomNavigationView.setOnItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
+        // Нижнє меню навігації
+        bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
                 R.id.menu_home -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.putExtra("tab", "home")
-                    startActivity(intent)
+                    startActivity(Intent(this, MainActivity::class.java).putExtra("tab", "home"))
                     finish()
                     true
                 }
@@ -46,7 +55,7 @@ class CartActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.menu_cart -> true // вже тут
+                R.id.menu_cart -> true // ми вже тут
                 R.id.menu_profile -> {
                     startActivity(Intent(this, ProfileActivity::class.java))
                     finish()
@@ -56,7 +65,6 @@ class CartActivity : AppCompatActivity() {
             }
         }
 
-        // Виділяємо активну вкладку
         bottomNavigationView.selectedItemId = R.id.menu_cart
     }
 }
