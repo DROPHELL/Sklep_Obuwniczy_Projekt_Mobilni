@@ -8,13 +8,17 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var searchView: SearchView
+    private lateinit var searchResultsRecyclerView: RecyclerView
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var backButton: ImageButton
+    private lateinit var adapter: ProductAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +27,17 @@ class SearchActivity : AppCompatActivity() {
         searchView = findViewById(R.id.searchView)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         backButton = findViewById(R.id.backButton)
+        searchResultsRecyclerView = findViewById(R.id.searchResultsRecyclerView)
 
-        // Назад — повертає на головний екран із вкладкою Home
+        searchResultsRecyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = ProductAdapter(emptyList(), onItemClick = { product ->
+            val intent = Intent(this, ProductDetailActivity::class.java)
+            intent.putExtra("product", product)
+            startActivity(intent)
+        })
+        searchResultsRecyclerView.adapter = adapter
+
+        // Назад
         backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("tab", "home")
@@ -32,14 +45,28 @@ class SearchActivity : AppCompatActivity() {
             finish()
         }
 
-        // Обробка пошуку
+        // Пошук
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (!query.isNullOrEmpty()) {
-                    Toast.makeText(this@SearchActivity, "Searching for: $query", Toast.LENGTH_SHORT).show()
+                    val allProducts = ProductData.getAll()
+                    val filtered = allProducts.filter {
+                        it.name.contains(query, ignoreCase = true)
+                    }
+                    adapter = ProductAdapter(filtered, onItemClick = { product ->
+                        val intent = Intent(this@SearchActivity, ProductDetailActivity::class.java)
+                        intent.putExtra("product", product)
+                        startActivity(intent)
+                    })
+                    searchResultsRecyclerView.adapter = adapter
+
                     val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(searchView.windowToken, 0)
                     searchView.clearFocus()
+
+                    if (filtered.isEmpty()) {
+                        Toast.makeText(this@SearchActivity, "Brak wyników", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 return true
             }
@@ -47,7 +74,7 @@ class SearchActivity : AppCompatActivity() {
             override fun onQueryTextChange(newText: String?): Boolean = false
         })
 
-        // Обробка натискань нижнього меню
+        // Нижнє меню
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_home -> {
@@ -57,7 +84,7 @@ class SearchActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.menu_search -> true // Поточна вкладка
+                R.id.menu_search -> true
                 R.id.menu_favorites -> {
                     startActivity(Intent(this, FavoritesActivity::class.java))
                     finish()
@@ -77,7 +104,6 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-        // Виділяємо активну вкладку
         bottomNavigationView.selectedItemId = R.id.menu_search
     }
 }

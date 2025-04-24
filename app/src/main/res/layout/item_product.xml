@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:radius="12dp"
-    android:elevation="4dp"
-    android:backgroundTint="@color/white">
+    android:layout_margin="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="@color/white"
+    app:strokeColor="@color/light_gray"
+    app:strokeWidth="1dp"
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,23 +32,29 @@
             android:text="Product Name"
             android:textStyle="bold"
             android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
             android:layout_marginTop="8dp" />
 
         <TextView
             android:id="@+id/productOldPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$299"
+            android:text="299.00 zł"
             android:textColor="@android:color/darker_gray"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="14sp"
             android:layout_marginTop="4dp" />
 
         <TextView
             android:id="@+id/productNewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$149"
-            android:textStyle="bold"
+            android:text="149.00 zł"
             android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_regular"
             android:layout_marginTop="2dp" />
 
         <!-- Кнопки у два стовпчики -->
@@ -52,15 +62,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:gravity="center_vertical">
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="8dp">
 
             <ImageButton
                 android:id="@+id/favoriteButton"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_favorite"
                 android:contentDescription="Add or Remove from Favorites"
                 android:scaleType="centerInside"
@@ -71,11 +82,11 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_cart_vector"
                 android:contentDescription="Add or Remove from Cart"
                 android:scaleType="centerInside"
                 android:tint="@color/black" />
         </LinearLayout>
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

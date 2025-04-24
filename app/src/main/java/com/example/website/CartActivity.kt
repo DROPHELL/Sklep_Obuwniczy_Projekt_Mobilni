@@ -27,9 +27,19 @@ class CartActivity : AppCompatActivity() {
 
         // ✅ Отримуємо лише товари, додані в корзину
         val productsInCart = ProductData.getCart()
-        adapter = ProductAdapter(productsInCart, isCartScreen = true)
-        recyclerView.adapter = adapter
 
+        // 🆕 Передаємо onItemClick для відкриття ProductDetailActivity
+        adapter = ProductAdapter(
+            productsInCart,
+            isCartScreen = true,
+            onItemClick = { product ->
+                val intent = Intent(this, ProductDetailActivity::class.java)
+                intent.putExtra("product", product)
+                startActivity(intent)
+            }
+        )
+
+        recyclerView.adapter = adapter
 
         // Назад → до Home
         backButton.setOnClickListener {

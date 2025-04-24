@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 🔙 Кнопка Назад -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="42dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_border"
+            android:contentDescription="Back"
+            android:src="@drawable/ic_arrow_back"
+            android:padding="8dp"
+            app:tint="@color/black" />
+
+        <!-- Заголовок -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Address"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Поля адреси -->
+        <EditText
+            android:id="@+id/streetEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Street Address"
+            android:background="@drawable/edit_text_border"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/cityEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="City"
+            android:background="@drawable/edit_text_border"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/stateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="State"
+            android:background="@drawable/edit_text_border"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/zipCodeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Zip Code"
+            android:background="@drawable/edit_text_border"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/countryEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Country"
+            android:background="@drawable/edit_text_border"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Кнопка збереження -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveAddressButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Done"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            app:cornerRadius="12dp"
+            app:rippleColor="@color/gray"
+            android:backgroundTint="@color/black"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Вивід збережених адрес -->
+        <TextView
+            android:id="@+id/savedAddresses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No saved addresses."
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</ScrollView>

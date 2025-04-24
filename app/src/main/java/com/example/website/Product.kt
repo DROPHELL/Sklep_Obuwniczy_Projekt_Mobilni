@@ -1,8 +1,10 @@
 package com.example.website
 
+import java.io.Serializable
+
 data class Product(
     val name: String,
     val oldPrice: Double,
     val newPrice: Double,
-    val imageResId: Int
-)
+    val imageNameBase: String? = null
+) : Serializable

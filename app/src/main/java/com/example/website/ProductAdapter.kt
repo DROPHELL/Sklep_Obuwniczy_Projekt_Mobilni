@@ -38,9 +38,21 @@ class ProductAdapter(
         val product = items[position]
 
         holder.productName.text = product.name
-        holder.productOldPrice.text = String.format("$%.2f", product.oldPrice)
-        holder.productNewPrice.text = String.format("$%.2f", product.newPrice)
-        holder.productImage.setImageResource(product.imageResId)
+        holder.productOldPrice.text = String.format("%.2f zł", product.oldPrice)
+        holder.productNewPrice.text = String.format("%.2f zł", product.newPrice)
+
+        val context = holder.itemView.context
+        val imageResId = context.resources.getIdentifier(
+            product.imageNameBase + "1", // наприклад: run1, spizike1
+            "drawable",
+            context.packageName
+        )
+
+        if (imageResId != 0) {
+            holder.productImage.setImageResource(imageResId)
+        } else {
+            holder.productImage.setImageResource(R.drawable.shoe_placeholder)
+        }
 
         holder.favoriteButton.setImageResource(
             if (ProductData.isFavorite(product)) R.drawable.ic_favorite_full
@@ -54,7 +66,6 @@ class ProductAdapter(
         holder.favoriteButton.visibility = View.VISIBLE
         holder.cartButton.visibility = View.VISIBLE
 
-        // Видалення з Favorites
         if (isFavoritesScreen) {
             holder.favoriteButton.setOnClickListener {
                 ProductData.removeFromFavorites(product)
@@ -72,7 +83,6 @@ class ProductAdapter(
             }
         }
 
-        // Видалення з Cart
         if (isCartScreen) {
             holder.cartButton.setOnClickListener {
                 ProductData.removeFromCart(product)
@@ -90,7 +100,6 @@ class ProductAdapter(
             }
         }
 
-        // 👇 Переходити до ProductDetailActivity
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(product)
         }

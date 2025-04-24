@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Верхній бар з кнопкою "Назад" -->
+        <!-- 🔙 Кнопка назад -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,13 +23,14 @@
                 android:id="@+id/backButton"
                 android:layout_width="42dp"
                 android:layout_height="42dp"
-                android:background="@null"
+                android:background="@drawable/button_border"
                 android:contentDescription="Back"
                 android:src="@drawable/ic_arrow_back"
+                android:padding="8dp"
                 app:tint="@color/black"/>
         </LinearLayout>
 
-        <!-- Баланс -->
+        <!-- 💰 Баланс -->
         <TextView
             android:id="@+id/walletBalanceTextView"
             android:layout_width="wrap_content"
@@ -37,11 +38,12 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
             android:text="Wallet Balance: $0.00"
             android:layout_marginTop="8dp"
             android:layout_gravity="center"/>
 
-        <!-- Введення картки -->
+        <!-- 💳 Номер картки -->
         <EditText
             android:id="@+id/cardNumberEditText"
             android:layout_width="match_parent"
@@ -50,20 +52,24 @@
             android:inputType="number"
             android:textColor="@color/black"
             android:background="@drawable/edit_text_border"
+            android:fontFamily="@font/poppins_regular"
             android:padding="12dp"
             android:layout_marginTop="16dp"/>
 
+        <!-- 🔐 CVV -->
         <EditText
             android:id="@+id/cvvEditText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="CVV"
-            android:inputType="number"
+            android:inputType="numberPassword"
             android:textColor="@color/black"
             android:background="@drawable/edit_text_border"
+            android:fontFamily="@font/poppins_regular"
             android:padding="12dp"
             android:layout_marginTop="12dp"/>
 
+        <!-- 🗓️ Дата -->
         <EditText
             android:id="@+id/expiryDateEditText"
             android:layout_width="match_parent"
@@ -72,18 +78,22 @@
             android:inputType="text"
             android:textColor="@color/black"
             android:background="@drawable/edit_text_border"
+            android:fontFamily="@font/poppins_regular"
             android:padding="12dp"
             android:layout_marginTop="12dp"/>
 
-        <!-- Кнопка збереження картки -->
-        <Button
+        <!-- ✅ Кнопка збереження -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/saveCardButton"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:text="Save Card"
             android:textColor="@color/white"
-            android:backgroundTint="@color/black"
-            android:layout_marginTop="24dp"/>
+            android:layout_marginTop="24dp"
+            app:cornerRadius="8dp"
+            app:rippleColor="@color/light_gray"
+            app:backgroundTint="@color/black"
+            android:fontFamily="@font/poppins_regular"/>
 
     </LinearLayout>
 </ScrollView>

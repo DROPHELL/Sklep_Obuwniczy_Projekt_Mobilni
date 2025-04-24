@@ -49,6 +49,10 @@
         <activity
             android:name=".FavoritesActivity"
             android:exported="true"/>
+        <activity
+            android:name=".AddressActivity"
+            android:exported="true"/>
+
 
         <!-- Екран логіну -->
         <activity

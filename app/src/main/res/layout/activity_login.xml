@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -16,7 +17,8 @@
         android:textSize="32sp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:layout_marginBottom="32dp"/>
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginBottom="32dp" />
 
     <!-- Поле для Email -->
     <EditText
@@ -28,11 +30,12 @@
         android:textColorHint="@color/gray"
         android:textColor="@color/black"
         android:background="@drawable/edit_text_border"
+        android:fontFamily="@font/poppins_regular"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:layout_marginBottom="16dp"
         android:focusable="true"
-        android:focusableInTouchMode="true"/>
+        android:focusableInTouchMode="true" />
 
     <!-- Поле для Пароля -->
     <EditText
@@ -44,21 +47,25 @@
         android:textColorHint="@color/gray"
         android:textColor="@color/black"
         android:background="@drawable/edit_text_border"
+        android:fontFamily="@font/poppins_regular"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:layout_marginBottom="16dp"
         android:focusable="true"
-        android:focusableInTouchMode="true"/>
+        android:focusableInTouchMode="true" />
 
     <!-- Кнопка входу -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:text="Login"
-        android:backgroundTint="@color/black"
         android:textColor="@color/white"
-        android:layout_marginBottom="16dp"/>
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/poppins_regular"
+        app:rippleColor="@color/light_gray"
+        style="@style/Widget.Material3.Button"
+        android:layout_marginBottom="16dp" />
 
     <!-- Перехід до реєстрації -->
     <TextView
@@ -67,7 +74,7 @@
         android:layout_height="wrap_content"
         android:text="Don't have an account? Create"
         android:textColor="@color/black"
+        android:fontFamily="@font/poppins_regular"
         android:clickable="true"
-        android:focusable="true"/>
-
+        android:focusable="true" />
 </LinearLayout>

@@ -64,14 +64,24 @@ class FavoritesActivity : AppCompatActivity() {
         bottomNavigationView.selectedItemId = R.id.menu_favorites
     }
 
-    override fun onResume() {  // Оновлюємо список при поверненні
+    override fun onResume() {
         super.onResume()
         updateAdapter()
     }
 
     private fun updateAdapter() {
         val favoriteProducts = ProductData.getFavorites()
-        adapter = ProductAdapter(favoriteProducts, isFavoritesScreen = true)
+
+        adapter = ProductAdapter(
+            favoriteProducts,
+            isFavoritesScreen = true,
+            onItemClick = { product ->
+                val intent = Intent(this, ProductDetailActivity::class.java)
+                intent.putExtra("product", product)
+                startActivity(intent)
+            }
+        )
+
         recyclerView.adapter = adapter
     }
 }

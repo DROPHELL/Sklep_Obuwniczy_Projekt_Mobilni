@@ -1,8 +1,8 @@
+<!-- styles.xml -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.WebSite" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Використання Poppins як стандартного шрифту -->
+        <item name="fontFamily">@font/poppins_regular</item>
     </style>
 
     <style name="Theme.WebSite" parent="Base.Theme.WebSite" />
