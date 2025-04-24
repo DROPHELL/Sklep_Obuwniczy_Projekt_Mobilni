@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- Основна частина -->
+    <!-- 🔍 Верхня частина -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,7 +14,7 @@
         android:padding="24dp"
         android:layout_marginBottom="64dp">
 
-        <!-- Рядок зі стрілкою і пошуком -->
+        <!-- 🔙 Кнопка назад + Пошук -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
                 android:src="@drawable/ic_arrow_back"
                 android:layout_marginEnd="8dp"
                 android:padding="8dp"
-                app:tint="@color/black" />
+                app:tint="@color/black"/>
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
@@ -40,14 +40,21 @@
                 android:layout_weight="1"
                 android:background="@drawable/edit_text_border"
                 android:iconifiedByDefault="false"
-                android:queryHint="Search for shoes..." />
+                android:queryHint="Search for shoes..."
+                android:fontFamily="@font/poppins_regular"/>
         </LinearLayout>
 
-        <!-- Можеш додати інший контент тут -->
-
+        <!-- 📋 Результати пошуку -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchResultsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="80dp"/>
     </LinearLayout>
 
-    <!-- Нижнє меню -->
+    <!-- 🔽 Нижнє меню -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
@@ -56,6 +63,5 @@
         android:background="@color/white"
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black" />
-
+        app:itemTextColor="@color/black"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

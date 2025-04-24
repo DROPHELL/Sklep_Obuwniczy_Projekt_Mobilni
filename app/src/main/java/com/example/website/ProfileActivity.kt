@@ -13,6 +13,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var emailTextView: TextView
     private lateinit var nameTextView: TextView
     private lateinit var walletButton: Button
+    private lateinit var addressButton: Button
     private lateinit var logoutButton: Button
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var shoeSizeSpinner: Spinner
@@ -21,11 +22,12 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        // Ініціалізація елементів
+        // Пошук елементів
         backButton = findViewById(R.id.backButton)
         emailTextView = findViewById(R.id.emailTextView)
         nameTextView = findViewById(R.id.nameTextView)
         walletButton = findViewById(R.id.walletButton)
+        addressButton = findViewById(R.id.addressButton)
         logoutButton = findViewById(R.id.logoutButton)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         shoeSizeSpinner = findViewById(R.id.shoeSizeSpinner)
@@ -34,21 +36,21 @@ class ProfileActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val email = sharedPreferences.getString("loggedInEmail", "Not logged in") ?: "Not logged in"
         val name = sharedPreferences.getString("loggedInName", "Test User") ?: "Test User"
-        val savedSize = sharedPreferences.getString("shoeSize", "Not Set")
+        val savedSize = sharedPreferences.getString("shoeSize", "Wybierz")
 
         nameTextView.text = "Name: $name"
         emailTextView.text = "Email Address: $email"
 
-        // Заповнення Spinner-а з розмірами
-        val sizes = listOf("Not Set", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45")
+        // Заповнення Spinner-а розмірами
+        val sizes = listOf("Wybierz", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, sizes)
         shoeSizeSpinner.adapter = adapter
 
-        // Встановити вибраний розмір
+        // Встановлення вибраного значення
         val index = sizes.indexOf(savedSize)
         if (index >= 0) shoeSizeSpinner.setSelection(index)
 
-        // Зберігати обраний розмір
+        // Обробка вибору
         shoeSizeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: android.view.View?, position: Int, id: Long) {
                 val selectedSize = sizes[position]
@@ -58,7 +60,7 @@ class ProfileActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        // Назад
+        // Кнопка назад
         backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("tab", "home")
@@ -66,12 +68,17 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
-        // Wallet
+        // Перехід до гаманця
         walletButton.setOnClickListener {
             startActivity(Intent(this, WalletActivity::class.java))
         }
 
-        // Log Out
+        // Перехід до адрес
+        addressButton.setOnClickListener {
+            startActivity(Intent(this, AddressActivity::class.java))
+        }
+
+        // Вихід із акаунта
         logoutButton.setOnClickListener {
             sharedPreferences.edit().clear().putBoolean("isLoggedIn", false).apply()
             val intent = Intent(this, LoginActivity::class.java)

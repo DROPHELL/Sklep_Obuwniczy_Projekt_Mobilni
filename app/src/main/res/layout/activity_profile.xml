@@ -12,18 +12,19 @@
         android:padding="24dp"
         android:layout_gravity="top">
 
-        <!-- Стрілка для повернення -->
+        <!-- 🔙 Back button -->
         <ImageButton
             android:id="@+id/backButton"
             android:layout_width="42dp"
             android:layout_height="48dp"
             android:layout_marginBottom="16dp"
-            android:background="@null"
+            android:background="@drawable/button_border"
             android:contentDescription="Back"
             android:src="@drawable/ic_arrow_back"
+            android:padding="8dp"
             app:tint="@color/black" />
 
-        <!-- Заголовок профілю -->
+        <!-- 👤 Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,9 +32,10 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular"
             android:layout_marginBottom="24dp" />
 
-        <!-- Ім'я користувача -->
+        <!-- 👤 Name -->
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="wrap_content"
@@ -41,24 +43,29 @@
             android:text="Name: Test"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:fontFamily="@font/poppins_regular"
             android:layout_marginBottom="16dp" />
 
-        <!-- Email користувача -->
+        <!-- ✉️ Email -->
         <TextView
             android:id="@+id/emailTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email Address: test@gmail.com"
+            android:text="Email Address: moroood72@gmail.com"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginBottom="16dp" />
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginBottom="16dp"
+            android:paddingEnd="12dp"
+            android:breakStrategy="simple" />
 
-        <!-- Розмір взуття (рядок з текстом і Spinner-ом) -->
+
+        <!-- 👟 Shoe size -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="16dp"
             android:gravity="center_vertical">
 
             <TextView
@@ -67,38 +74,60 @@
                 android:text="Shoe Size:"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:layout_marginEnd="12dp"/>
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginEnd="12dp" />
 
             <Spinner
                 android:id="@+id/shoeSizeSpinner"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
                 android:spinnerMode="dropdown" />
         </LinearLayout>
 
+        <!-- 📦 Delivery Address button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addressButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Delivery Address"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            app:cornerRadius="12dp"
+            app:rippleColor="@color/gray"
+            android:backgroundTint="@color/black"
+            android:layout_marginBottom="16dp" />
 
-        <!-- Кнопка Wallet -->
-        <Button
+        <!-- 👛 Wallet -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/walletButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text="Wallet"
+            android:textAllCaps="false"
             android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            app:cornerRadius="12dp"
+            app:rippleColor="@color/gray"
             android:backgroundTint="@color/black"
             android:layout_marginBottom="16dp" />
 
-        <!-- Кнопка Log Out -->
-        <Button
+        <!-- 🚪 Logout -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/logoutButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text="Log Out"
+            android:textAllCaps="false"
             android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            app:cornerRadius="12dp"
+            app:rippleColor="@color/gray"
             android:backgroundTint="@color/red"
             android:layout_marginBottom="16dp" />
     </LinearLayout>
 
-    <!-- Нижнє меню -->
+    <!-- 🔽 Bottom navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"

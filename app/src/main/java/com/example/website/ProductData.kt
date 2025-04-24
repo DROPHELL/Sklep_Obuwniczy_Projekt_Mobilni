@@ -4,16 +4,16 @@ import android.content.Context
 
 object ProductData {
     private val allProducts = listOf(
-        Product("Jordan Spizike", 169.0, 129.0, R.drawable.spizike1),
-        Product("White Thunder", 179.0, 139.0, R.drawable.white_thunder1),
-        Product("Adidas Samba", 149.0, 109.0, R.drawable.samba1),
-        Product("Adidas Spezial", 159.0, 119.0, R.drawable.spezial1),
-        Product("Nike Run", 129.0, 99.0, R.drawable.run1),
-        Product("New Balance 550", 189.0, 139.0, R.drawable.new_balan1),
-        Product("New Balance Belek", 169.0, 119.0, R.drawable.new_bele1),
-        Product("Retro Max Air", 209.0, 149.0, R.drawable.rma1),
-        Product("Jordan Low SE", 179.0, 129.0, R.drawable.low_se1),
-        Product("Samba OG", 149.0, 109.0, R.drawable.sambaog1)
+        Product("Jordan Spizike", 169.0, 129.0, "spizike"),
+        Product("White Thunder", 179.0, 139.0, "white_thunder"),
+        Product("Adidas Samba", 149.0, 109.0, "samba"),
+        Product("Adidas Spezial", 159.0, 119.0, "spezial"),
+        Product("Nike Run", 129.0, 99.0, "run"),
+        Product("New Balance 550", 189.0, 139.0, "new_balan"),
+        Product("New Balance Belek", 169.0, 119.0, "new_bele"),
+        Product("Retro Max Air", 209.0, 149.0, "rma"),
+        Product("Jordan Low SE", 179.0, 129.0, "low_se"),
+        Product("Samba OG", 149.0, 109.0, "sambaog")
     )
 
     private var favorites = mutableSetOf<Product>()
@@ -28,6 +28,7 @@ object ProductData {
 
     fun getAll(): List<Product> = allProducts
 
+    // Favorites
     fun addToFavorites(product: Product) {
         favorites.add(product)
         sessionManager?.saveFavorites(favorites.toList())
@@ -41,6 +42,7 @@ object ProductData {
     fun isFavorite(product: Product): Boolean = favorites.contains(product)
     fun getFavorites(): List<Product> = favorites.toList()
 
+    // Cart
     fun addToCart(product: Product) {
         cart.add(product)
         sessionManager?.saveCart(cart.toList())

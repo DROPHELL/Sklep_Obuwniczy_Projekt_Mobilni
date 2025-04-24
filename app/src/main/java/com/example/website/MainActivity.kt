@@ -2,7 +2,6 @@ package com.example.website
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,7 +29,15 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val productList = ProductData.getAll()
-        adapter = ProductAdapter(productList)
+
+        // Додаємо обробник натискання
+        adapter = ProductAdapter(productList, onItemClick = { product ->
+            val intent = Intent(this, ProductDetailActivity::class.java)
+            intent.putExtra("product", product)
+            startActivity(intent)
+
+        })
+
         recyclerView.adapter = adapter
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView)

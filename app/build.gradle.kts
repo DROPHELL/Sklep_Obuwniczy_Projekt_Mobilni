@@ -39,6 +39,7 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
