@@ -6,5 +6,6 @@ data class Product(
     val name: String,
     val oldPrice: Double,
     val newPrice: Double,
-    val imageNameBase: String? = null
+    val imageNameBase: String,
+    var selectedSize: Int? = null // ➔ Додаємо вибраний розмір
 ) : Serializable

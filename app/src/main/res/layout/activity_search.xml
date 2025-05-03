@@ -6,45 +6,54 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- 🔍 Верхня частина -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="24dp"
-        android:layout_marginBottom="64dp">
+        android:orientation="vertical">
 
-        <!-- 🔙 Кнопка назад + Пошук -->
+        <!-- Верхній рядок: стрілка назад + пошук -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="16dp">
+            android:padding="8dp"
+            android:gravity="center_vertical">
 
+            <!-- Стрілка Назад -->
             <ImageButton
                 android:id="@+id/backButton"
-                android:layout_width="42dp"
-                android:layout_height="48dp"
-                android:background="@drawable/button_border"
-                android:contentDescription="Back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_arrow_back"
-                android:layout_marginEnd="8dp"
-                android:padding="8dp"
-                app:tint="@color/black"/>
+                android:tint="@color/black"
+                android:contentDescription="Back"/>
 
+            <!-- Поле пошуку (без background) -->
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/edit_text_border"
-                android:iconifiedByDefault="false"
-                android:queryHint="Search for shoes..."
-                android:fontFamily="@font/poppins_regular"/>
+                android:queryHint="Szukaj butów..."
+                android:iconifiedByDefault="false"/>
         </LinearLayout>
 
-        <!-- 📋 Результати пошуку -->
+        <!-- Заголовок результатів -->
+        <TextView
+            android:id="@+id/resultsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Znalezione produkty"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
+
+        <!-- Результати пошуку -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchResultsRecyclerView"
             android:layout_width="match_parent"
@@ -54,7 +63,7 @@
             android:paddingBottom="80dp"/>
     </LinearLayout>
 
-    <!-- 🔽 Нижнє меню -->
+    <!-- Нижнє меню -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
@@ -64,4 +73,5 @@
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/black"
         app:itemTextColor="@color/black"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

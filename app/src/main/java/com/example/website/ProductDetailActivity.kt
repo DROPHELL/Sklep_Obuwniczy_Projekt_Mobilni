@@ -1,168 +1,157 @@
 package com.example.website
 
-import android.content.Context
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
-import android.view.View
-import android.widget.*
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.google.android.flexbox.FlexboxLayout
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 
 class ProductDetailActivity : AppCompatActivity() {
 
-    private lateinit var mainImage: ImageView
+    private lateinit var productImage: ImageView
     private lateinit var thumbnailContainer: LinearLayout
     private lateinit var productName: TextView
     private lateinit var productPrice: TextView
     private lateinit var sizeContainer: FlexboxLayout
-    private lateinit var quantityText: TextView
     private lateinit var buyButton: MaterialButton
+    private lateinit var favoriteButton: ImageButton
 
-    private lateinit var selectedProduct: Product
-    private var selectedSize: String? = null
-    private var quantity = 1
-
-    private val sizes = listOf("36", "37", "38", "39", "40", "41", "42", "43", "44", "45")
+    private var selectedProduct: Product? = null
+    private var selectedSize: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener { finish() }
-
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNavigationView.selectedItemId = R.id.menu_home
-        bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.menu_home -> startActivity(Intent(this, MainActivity::class.java))
-                R.id.menu_search -> startActivity(Intent(this, SearchActivity::class.java))
-                R.id.menu_favorites -> startActivity(Intent(this, FavoritesActivity::class.java))
-                R.id.menu_cart -> startActivity(Intent(this, CartActivity::class.java))
-                R.id.menu_profile -> startActivity(Intent(this, ProfileActivity::class.java))
-            }
-            finish()
-            true
-        }
-
-        mainImage = findViewById(R.id.productImage)
+        productImage = findViewById(R.id.productImage)
         thumbnailContainer = findViewById(R.id.thumbnailContainer)
         productName = findViewById(R.id.productName)
         productPrice = findViewById(R.id.productPrice)
         sizeContainer = findViewById(R.id.sizeContainer)
-        quantityText = findViewById(R.id.quantityText)
         buyButton = findViewById(R.id.buyButton)
+        favoriteButton = findViewById(R.id.favoriteButton)
 
-        val minusButton = findViewById<MaterialButton>(R.id.minusButton)
-        val plusButton = findViewById<MaterialButton>(R.id.plusButton)
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        toolbar.setNavigationOnClickListener { finish() }
 
-        selectedProduct = intent.getSerializableExtra("product") as Product
-        val baseName = selectedProduct.imageNameBase
+        selectedProduct = intent.getSerializableExtra("product") as? Product
 
-        productName.text = selectedProduct.name
-        productPrice.text = "Cena: %.2f zł".format(selectedProduct.newPrice)
+        // ➔ Взяти розмір з профілю автоматично
+        val sessionManager = SessionManager(this)
+        selectedSize = sessionManager.getShoeSize()
 
-        val mainResId = resources.getIdentifier(baseName + "1", "drawable", packageName)
-        mainImage.setImageResource(mainResId)
+        selectedProduct?.let { product ->
+            val resId = resources.getIdentifier(product.imageNameBase + "1", "drawable", packageName)
+            productImage.setImageResource(resId.takeIf { it != 0 } ?: R.drawable.shoe_placeholder)
 
-        for (i in 1..4) {
-            val resId = resources.getIdentifier(baseName + i, "drawable", packageName)
-            val thumb = ImageView(this)
-            thumb.setImageResource(resId)
+            productName.text = product.name
+            productPrice.text = "Cena: %.2f zł".format(product.newPrice)
 
-            val size = resources.getDimensionPixelSize(R.dimen.thumbnail_size)
-            val margin = resources.getDimensionPixelSize(R.dimen.thumbnail_margin)
-            val params = LinearLayout.LayoutParams(size, size)
-            params.setMargins(margin, 0, margin, 0)
-            thumb.layoutParams = params
-
-            thumb.setOnClickListener {
-                mainImage.setImageResource(resId)
-            }
-
-            thumbnailContainer.addView(thumb)
-        }
-
-        val savedSize = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-            .getString("shoeSize", null)
-
-        sizes.forEach { size ->
-            val button = MaterialButton(this)
-            button.text = size
-            button.setPadding(24, 8, 24, 8)
-            button.setTextSize(14f)
-            button.setTypeface(null, Typeface.BOLD)
-            button.setBackgroundColor(getColor(android.R.color.transparent))
-            button.setStrokeColorResource(R.color.black)
-            button.strokeWidth = 2
-            button.setTextColor(getColor(R.color.black))
-            button.cornerRadius = 24
-
-            val layoutParams = FlexboxLayout.LayoutParams(
-                FlexboxLayout.LayoutParams.WRAP_CONTENT,
-                FlexboxLayout.LayoutParams.WRAP_CONTENT
-            )
-            layoutParams.setMargins(8, 8, 8, 8)
-            button.layoutParams = layoutParams
-
-            if (savedSize == size) {
-                selectSize(button)
-                selectedSize = size
-            }
-
-            button.setOnClickListener {
-                selectSize(button)
-                selectedSize = size
-            }
-
-            sizeContainer.addView(button)
-        }
-
-        quantityText.text = quantity.toString()
-
-        minusButton.setOnClickListener {
-            if (quantity > 1) {
-                quantity--
-                quantityText.text = quantity.toString()
-            }
-        }
-
-        plusButton.setOnClickListener {
-            quantity++
-            quantityText.text = quantity.toString()
+            addThumbnails(product)
+            addSizeOptions() // Додаємо розміри
+            updateFavoriteIcon()
         }
 
         buyButton.setOnClickListener {
-            if (selectedSize == null) {
-                Toast.makeText(this, "Wybierz rozmiar", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            selectedProduct?.let { product ->
+                if (selectedSize == null) {
+                    Toast.makeText(this, "Wybierz rozmiar!", Toast.LENGTH_SHORT).show()
+                } else {
+                    product.selectedSize = selectedSize
+                    ProductData.addToCart(product)
+                    Toast.makeText(this, "Dodano do koszyka!", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, CartActivity::class.java))
+                    finish()
+                }
             }
+        }
 
-            Toast.makeText(
-                this,
-                "Zakupiono: ${selectedProduct.name}, rozmiar $selectedSize x$quantity",
-                Toast.LENGTH_SHORT
-            ).show()
-
-            // Тут можна додати перехід до екрана оплати
+        favoriteButton.setOnClickListener {
+            selectedProduct?.let { product ->
+                if (ProductData.isFavorite(product)) {
+                    ProductData.removeFromFavorites(product)
+                    Toast.makeText(this, "Usunięto z ulubionych", Toast.LENGTH_SHORT).show()
+                } else {
+                    ProductData.addToFavorites(product)
+                    Toast.makeText(this, "Dodano do ulubionych!", Toast.LENGTH_SHORT).show()
+                }
+                updateFavoriteIcon()
+            }
         }
     }
 
-    private fun selectSize(selected: MaterialButton) {
-        for (i in 0 until sizeContainer.childCount) {
-            val child = sizeContainer.getChildAt(i)
-            if (child is MaterialButton) {
-                child.setBackgroundColor(getColor(android.R.color.transparent))
-                child.setTextColor(getColor(R.color.black))
+    private fun addThumbnails(product: Product) {
+        thumbnailContainer.removeAllViews()
+        for (i in 1..4) {
+            val thumb = ImageView(this)
+            val resId = resources.getIdentifier(product.imageNameBase + "$i", "drawable", packageName)
+            thumb.setImageResource(resId.takeIf { it != 0 } ?: R.drawable.shoe_placeholder)
+            val params = LinearLayout.LayoutParams(180, 180).apply {
+                setMargins(8, 8, 8, 8)
+            }
+            thumb.layoutParams = params
+            thumb.scaleType = ImageView.ScaleType.CENTER_CROP
+            thumb.setOnClickListener {
+                productImage.setImageResource(resId)
+            }
+            thumbnailContainer.addView(thumb)
+        }
+    }
+
+    private fun addSizeOptions() {
+        val sizes = listOf(36, 37, 38, 39, 40, 41, 42, 43, 44, 45)
+        sizeContainer.removeAllViews()
+
+        for (size in sizes) {
+            val button = MaterialButton(this).apply {
+                text = size.toString()
+                setBackgroundColor(resources.getColor(android.R.color.white))
+                setTextColor(resources.getColor(R.color.black))
+                strokeWidth = 2
+                strokeColor = getColorStateList(R.color.black)
+                cornerRadius = 12
+                layoutParams = FlexboxLayout.LayoutParams(
+                    FlexboxLayout.LayoutParams.WRAP_CONTENT,
+                    FlexboxLayout.LayoutParams.WRAP_CONTENT
+                ).apply {
+                    setMargins(8, 8, 8, 8)
+                }
+                setOnClickListener {
+                    selectedSize = size
+                    highlightSelectedSize(this)
+                }
+            }
+            sizeContainer.addView(button)
+
+            // Якщо розмір співпадає з збереженим, підсвічуємо
+            if (size == selectedSize) {
+                highlightSelectedSize(button)
             }
         }
-        selected.setBackgroundColor(getColor(R.color.black))
-        selected.setTextColor(getColor(android.R.color.white))
+    }
+
+    private fun highlightSelectedSize(selectedButton: MaterialButton) {
+        for (i in 0 until sizeContainer.childCount) {
+            val button = sizeContainer.getChildAt(i) as MaterialButton
+            button.setBackgroundColor(resources.getColor(android.R.color.white))
+            button.setTextColor(resources.getColor(R.color.black))
+        }
+        selectedButton.setBackgroundColor(resources.getColor(R.color.black))
+        selectedButton.setTextColor(resources.getColor(android.R.color.white))
+    }
+
+    private fun updateFavoriteIcon() {
+        selectedProduct?.let { product ->
+            if (ProductData.isFavorite(product)) {
+                favoriteButton.setImageResource(R.drawable.ic_favorite_full)
+            } else {
+                favoriteButton.setImageResource(R.drawable.ic_favorite)
+            }
+        }
     }
 }

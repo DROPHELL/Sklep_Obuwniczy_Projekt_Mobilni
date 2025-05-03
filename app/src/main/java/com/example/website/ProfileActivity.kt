@@ -1,6 +1,5 @@
 package com.example.website
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
@@ -16,7 +15,6 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var addressButton: Button
     private lateinit var logoutButton: Button
     private lateinit var bottomNavigationView: BottomNavigationView
-    private lateinit var shoeSizeSpinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,35 +28,13 @@ class ProfileActivity : AppCompatActivity() {
         addressButton = findViewById(R.id.addressButton)
         logoutButton = findViewById(R.id.logoutButton)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        shoeSizeSpinner = findViewById(R.id.shoeSizeSpinner)
 
-        // SharedPreferences
-        val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val email = sharedPreferences.getString("loggedInEmail", "Not logged in") ?: "Not logged in"
         val name = sharedPreferences.getString("loggedInName", "Test User") ?: "Test User"
-        val savedSize = sharedPreferences.getString("shoeSize", "Wybierz")
 
         nameTextView.text = "Name: $name"
         emailTextView.text = "Email Address: $email"
-
-        // Заповнення Spinner-а розмірами
-        val sizes = listOf("Wybierz", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, sizes)
-        shoeSizeSpinner.adapter = adapter
-
-        // Встановлення вибраного значення
-        val index = sizes.indexOf(savedSize)
-        if (index >= 0) shoeSizeSpinner.setSelection(index)
-
-        // Обробка вибору
-        shoeSizeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: android.view.View?, position: Int, id: Long) {
-                val selectedSize = sizes[position]
-                sharedPreferences.edit().putString("shoeSize", selectedSize).apply()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
 
         // Кнопка назад
         backButton.setOnClickListener {

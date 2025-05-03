@@ -3,7 +3,7 @@ package com.example.website
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -16,26 +16,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Отримуємо userId (email або інший унікальний ID)
-        val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
-        val userId = prefs.getString("loggedInEmail", null) ?: "guest"
-
-        // Ініціалізуємо сесію для цього користувача
-        ProductData.init(applicationContext, userId)
+        // Ініціалізуємо ProductData (тепер без userId)
+        ProductData.init(applicationContext)
 
         setContentView(R.layout.activity_main)
 
         recyclerView = findViewById(R.id.productRecyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
 
         val productList = ProductData.getAll()
 
-        // Додаємо обробник натискання
         adapter = ProductAdapter(productList, onItemClick = { product ->
             val intent = Intent(this, ProductDetailActivity::class.java)
             intent.putExtra("product", product)
             startActivity(intent)
-
         })
 
         recyclerView.adapter = adapter

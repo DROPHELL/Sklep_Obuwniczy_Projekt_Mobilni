@@ -10,40 +10,59 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="24dp"
-        android:layout_gravity="top">
+        android:paddingBottom="80dp"> <!-- щоб місце було для меню -->
 
-        <!-- Стрілка для повернення -->
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="42dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="16dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Back"
-            android:src="@drawable/ic_arrow_back"
-            android:tint="@color/black" />
-
-        <!-- Заголовок корзини -->
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Верхня панель -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your Cart"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppins_regular"
-            android:layout_marginBottom="24dp"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
 
-        <!-- RecyclerView для товарів -->
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="Back"
+                android:tint="@color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Koszyk"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+
+        <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cartRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:clipToPadding="false"
-            android:paddingBottom="80dp" />
+            android:paddingBottom="16dp" />
 
+        <!-- Кнопка DO KASY -->
+        <Button
+            android:id="@+id/checkoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/black"
+            android:text="DO KASY"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="12dp"
+            android:textAllCaps="false" />
     </LinearLayout>
 
     <!-- Нижнє меню -->
@@ -55,5 +74,6 @@
         android:background="@color/white"
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"/>
+        app:itemTextColor="@color/black" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
