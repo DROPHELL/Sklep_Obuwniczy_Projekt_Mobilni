@@ -6,18 +6,18 @@
     android:padding="24dp"
     android:background="@color/white">
 
-    <!-- Заголовок: Адреса доставки -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adres dostawy:"
+        android:text="Delivery address:"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="16sp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/poppins_regular" />
 
-    <!-- Вибір адреси -->
+
     <Spinner
         android:id="@+id/addressSpinner"
         android:layout_width="match_parent"
@@ -26,11 +26,11 @@
         android:background="@drawable/button_border"
         android:padding="8dp" />
 
-    <!-- Заголовок: Картка -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Karta płatnicza:"
+        android:text="Payment Card:"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="16sp"
@@ -38,7 +38,7 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/poppins_regular" />
 
-    <!-- Вибір картки -->
+
     <Spinner
         android:id="@+id/cardSpinner"
         android:layout_width="match_parent"

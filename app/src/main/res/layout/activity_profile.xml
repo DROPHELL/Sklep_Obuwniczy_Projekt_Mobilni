@@ -12,7 +12,7 @@
         android:padding="24dp"
         android:layout_gravity="top">
 
-        <!-- 🔙 Back button -->
+
         <ImageButton
             android:id="@+id/backButton"
             android:layout_width="42dp"
@@ -24,7 +24,7 @@
             android:padding="8dp"
             app:tint="@color/black" />
 
-        <!-- 👤 Title -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:fontFamily="@font/poppins_regular"
             android:layout_marginBottom="24dp" />
 
-        <!-- 👤 Name -->
+
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
             android:fontFamily="@font/poppins_regular"
             android:layout_marginBottom="16dp" />
 
-        <!-- ✉️ Email -->
+
         <TextView
             android:id="@+id/emailTextView"
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
             android:paddingEnd="12dp"
             android:breakStrategy="simple" />
 
-        <!-- 📦 Delivery Address button -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addressButton"
             android:layout_width="match_parent"
@@ -73,7 +73,7 @@
             android:backgroundTint="@color/black"
             android:layout_marginBottom="16dp" />
 
-        <!-- 👛 Wallet -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/walletButton"
             android:layout_width="match_parent"
@@ -87,7 +87,7 @@
             android:backgroundTint="@color/black"
             android:layout_marginBottom="16dp" />
 
-        <!-- 🚪 Logout -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logoutButton"
             android:layout_width="match_parent"
@@ -102,7 +102,7 @@
             android:layout_marginBottom="16dp" />
     </LinearLayout>
 
-    <!-- 🔽 Bottom navigation -->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"

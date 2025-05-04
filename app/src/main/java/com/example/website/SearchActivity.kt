@@ -33,7 +33,7 @@ class SearchActivity : AppCompatActivity() {
         backButton = findViewById(R.id.backButton)
         resultsTitle = findViewById(R.id.resultsTitle)
 
-        // ВАЖЛИВО: заміна LinearLayoutManager на GridLayoutManager з 2 стовпцями
+
         searchResultsRecyclerView.layoutManager = GridLayoutManager(this, 2)
 
         adapter = ProductAdapter(emptyList()) { product ->
@@ -112,7 +112,7 @@ class SearchActivity : AppCompatActivity() {
         searchView.clearFocus()
 
         if (filtered.isEmpty()) {
-            Toast.makeText(this, "Brak wyników", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No results", Toast.LENGTH_SHORT).show()
             resultsTitle.visibility = View.GONE
         } else {
             resultsTitle.visibility = View.VISIBLE

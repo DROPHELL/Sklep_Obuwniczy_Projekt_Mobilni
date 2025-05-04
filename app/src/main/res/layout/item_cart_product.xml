@@ -14,7 +14,7 @@
         android:padding="12dp"
         android:gravity="center_vertical">
 
-        <!-- Фото -->
+
         <ImageView
             android:id="@+id/cartProductImage"
             android:layout_width="80dp"
@@ -22,7 +22,7 @@
             android:scaleType="centerCrop"
             android:background="@drawable/selected_borde" />
 
-        <!-- Блок назви, ціни та розміру -->
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -30,19 +30,19 @@
             android:orientation="vertical"
             android:layout_marginStart="12dp">
 
-            <!-- Назва продукту -->
+
             <TextView
                 android:id="@+id/cartProductName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Назва продукту"
+                android:text="Product name"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:maxLines="2"
                 android:ellipsize="end" />
 
-            <!-- Ціна -->
+
             <TextView
                 android:id="@+id/cartProductPrice"
                 android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
                 android:textSize="13sp"
                 android:layout_marginTop="4dp" />
 
-            <!-- Розмір -->
+
             <TextView
                 android:id="@+id/cartProductSize"
                 android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
 
         </LinearLayout>
 
-        <!-- Три крапки справа -->
+
         <ImageButton
             android:id="@+id/cartMoreButton"
             android:layout_width="32dp"

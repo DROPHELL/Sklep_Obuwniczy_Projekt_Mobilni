@@ -34,9 +34,9 @@ class RegisterActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.passwordEditText)
         registerButton = findViewById(R.id.registerButton)
 
-        // Кнопка "Назад"
+
         backButton.setOnClickListener {
-            finish() // Закриває RegisterActivity і повертає на попередній екран (LoginActivity)
+            finish()
         }
 
         registerButton.setOnClickListener {

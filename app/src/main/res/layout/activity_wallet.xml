@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- 🔙 Кнопка назад -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
                 app:tint="@color/black"/>
         </LinearLayout>
 
-        <!-- 💰 Баланс -->
+
         <TextView
             android:id="@+id/walletBalanceTextView"
             android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
             android:layout_marginTop="8dp"
             android:layout_gravity="center"/>
 
-        <!-- 💳 Номер картки -->
+
         <EditText
             android:id="@+id/cardNumberEditText"
             android:layout_width="match_parent"
@@ -56,7 +56,7 @@
             android:padding="12dp"
             android:layout_marginTop="16dp"/>
 
-        <!-- 🔐 CVV -->
+
         <EditText
             android:id="@+id/cvvEditText"
             android:layout_width="match_parent"
@@ -69,7 +69,6 @@
             android:padding="12dp"
             android:layout_marginTop="12dp"/>
 
-        <!-- 🗓️ Дата -->
         <EditText
             android:id="@+id/expiryDateEditText"
             android:layout_width="match_parent"
@@ -82,7 +81,7 @@
             android:padding="12dp"
             android:layout_marginTop="12dp"/>
 
-        <!-- ✅ Кнопка збереження -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/saveCardButton"
             android:layout_width="match_parent"

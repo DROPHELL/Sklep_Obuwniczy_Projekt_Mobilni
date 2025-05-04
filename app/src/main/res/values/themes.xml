@@ -1,7 +1,6 @@
 <!-- styles.xml -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.WebSite" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Використання Poppins як стандартного шрифту -->
         <item name="fontFamily">@font/poppins_regular</item>
     </style>
 

@@ -20,7 +20,7 @@ class AddressActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_address)
 
-        // 🔍 Пошук елементів
+
         streetEditText = findViewById(R.id.streetEditText)
         cityEditText = findViewById(R.id.cityEditText)
         stateEditText = findViewById(R.id.stateEditText)
@@ -32,11 +32,11 @@ class AddressActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
-        // 📋 Показати збережену адресу
+
         val savedAddress = sharedPreferences.getString("deliveryAddress", null)
         savedAddressesTextView.text = savedAddress ?: "No saved addresses."
 
-        // 💾 Збереження адреси
+
         saveButton.setOnClickListener {
             val street = streetEditText.text.toString().trim()
             val city = cityEditText.text.toString().trim()
@@ -56,7 +56,7 @@ class AddressActivity : AppCompatActivity() {
             Toast.makeText(this, "Address saved", Toast.LENGTH_SHORT).show()
         }
 
-        // ⬅️ Назад
+
         backButton.setOnClickListener {
             finish()
         }

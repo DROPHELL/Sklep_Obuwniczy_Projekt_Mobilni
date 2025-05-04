@@ -14,7 +14,7 @@ class FavoritesActivity : AppCompatActivity() {
     private lateinit var backButton: ImageButton
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: FavoritesAdapter // 👉 тут
+    private lateinit var adapter: FavoritesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class FavoritesActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         recyclerView = findViewById(R.id.favoritesRecyclerView)
 
-        recyclerView.layoutManager = GridLayoutManager(this, 2) // замість 3
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
 
 
         updateAdapter()
@@ -76,12 +76,12 @@ class FavoritesActivity : AppCompatActivity() {
             favoriteProducts.toMutableList(),
             onAddToCartClick = { product ->
                 ProductData.addToCart(product)
-                Toast.makeText(this, "Dodano do koszyka", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show()
             },
             onRemoveFromFavorites = { product ->
                 ProductData.removeFromFavorites(product)
-                updateAdapter() // 🔥 Оновити список після видалення
-                Toast.makeText(this, "Usunięto z ulubionych", Toast.LENGTH_SHORT).show()
+                updateAdapter()
+                Toast.makeText(this, "Removed from favorites", Toast.LENGTH_SHORT).show()
             }
         )
 

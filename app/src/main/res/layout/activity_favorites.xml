@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Кнопка назад -->
+
         <ImageButton
             android:id="@+id/backButton"
             android:layout_width="42dp"
@@ -24,7 +24,7 @@
             android:layout_gravity="start"
             android:layout_marginBottom="12dp" />
 
-        <!-- Текст-заголовок -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp" />
 
-        <!-- Список улюблених товарів -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favoritesRecyclerView"
             android:layout_width="match_parent"
@@ -46,7 +46,7 @@
             android:paddingBottom="80dp" />
     </LinearLayout>
 
-    <!-- Нижня навігація -->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"

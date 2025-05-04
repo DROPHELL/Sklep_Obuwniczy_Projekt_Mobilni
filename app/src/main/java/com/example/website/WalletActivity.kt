@@ -29,17 +29,16 @@ class WalletActivity : AppCompatActivity() {
         saveCardButton = findViewById(R.id.saveCardButton)
         backButton = findViewById(R.id.backButton)
 
-        // Отримання даних з SharedPreferences
+
         val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val balance = sharedPreferences.getFloat("walletBalance", 0.0f)
         val savedCardNumber = sharedPreferences.getString("cardNumber", "")
         val savedCVV = sharedPreferences.getString("cvv", "")
         val savedExpiryDate = sharedPreferences.getString("expiryDate", "")
 
-        // Відображення балансу
         walletBalanceTextView.text = getString(R.string.wallet_balance, balance)
 
-        // Якщо картка вже була введена, відобразимо її
+
         if (!savedCardNumber.isNullOrEmpty()) {
             cardNumberEditText.setText(savedCardNumber)
         }
@@ -60,7 +59,7 @@ class WalletActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Збереження картки у SharedPreferences
+
             val editor = sharedPreferences.edit()
             editor.putString("cardNumber", cardNumber)
             editor.putString("cvv", cvv)
@@ -70,7 +69,7 @@ class WalletActivity : AppCompatActivity() {
             Toast.makeText(this, "Card saved successfully!", Toast.LENGTH_SHORT).show()
         }
 
-        // Кнопка "Назад"
+
         backButton.setOnClickListener {
             finish()
         }

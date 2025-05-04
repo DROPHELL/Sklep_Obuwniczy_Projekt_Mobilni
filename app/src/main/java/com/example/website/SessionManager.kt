@@ -10,7 +10,7 @@ class SessionManager(context: Context) {
     private val prefs: SharedPreferences = context.getSharedPreferences("user_data", Context.MODE_PRIVATE)
     private val gson = Gson()
 
-    // 🔹 Favorites
+
     fun saveFavorites(favorites: List<Product>) {
         prefs.edit().putString("favorites", gson.toJson(favorites)).apply()
     }
@@ -21,7 +21,7 @@ class SessionManager(context: Context) {
         return gson.fromJson(json, type)
     }
 
-    // 🔹 Cart
+
     fun saveCart(cart: List<Product>) {
         prefs.edit().putString("cart", gson.toJson(cart)).apply()
     }
@@ -32,7 +32,7 @@ class SessionManager(context: Context) {
         return gson.fromJson(json, type)
     }
 
-    // 🔹 Shoe Size
+
     fun saveShoeSize(size: Int) {
         prefs.edit().putInt("shoe_size", size).apply()
     }
@@ -42,7 +42,7 @@ class SessionManager(context: Context) {
         return if (size != -1) size else null
     }
 
-    // 🔹 Addresses (simple)
+
     fun saveAddresses(addresses: List<String>) {
         prefs.edit().putString("addresses", gson.toJson(addresses)).apply()
     }
@@ -53,7 +53,7 @@ class SessionManager(context: Context) {
         return gson.fromJson(json, type)
     }
 
-    // 🔹 Cards (simple)
+
     fun saveCards(cards: List<String>) {
         prefs.edit().putString("cards", gson.toJson(cards)).apply()
     }
@@ -64,7 +64,7 @@ class SessionManager(context: Context) {
         return gson.fromJson(json, type)
     }
 
-    // 🔹 Full Address
+
     fun saveFullAddress(address: FullAddress) {
         prefs.edit().putString("full_address", gson.toJson(address)).apply()
     }
@@ -74,7 +74,7 @@ class SessionManager(context: Context) {
         return gson.fromJson(json, FullAddress::class.java)
     }
 
-    // 🔹 Full Card
+
     fun saveFullCard(card: FullCard) {
         prefs.edit().putString("full_card", gson.toJson(card)).apply()
     }
@@ -84,7 +84,7 @@ class SessionManager(context: Context) {
         return gson.fromJson(json, FullCard::class.java)
     }
 
-    // 🔹 Clear all user data
+
     fun clearAll() {
         prefs.edit().clear().apply()
     }

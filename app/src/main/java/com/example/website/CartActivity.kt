@@ -38,7 +38,7 @@ class CartActivity : AppCompatActivity() {
                 cartItems.remove(product)
                 adapter.notifyDataSetChanged()
                 updateTotalPrice()
-                Toast.makeText(this, "Usunięto z koszyka", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Removed from cart", Toast.LENGTH_SHORT).show()
             }
         )
 
@@ -52,7 +52,7 @@ class CartActivity : AppCompatActivity() {
 
         checkoutButton.setOnClickListener {
             if (cartItems.isEmpty()) {
-                Toast.makeText(this, "Koszyk jest pusty!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "The cart is empty!", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, CheckoutActivity::class.java)
                 startActivity(intent)
@@ -91,6 +91,6 @@ class CartActivity : AppCompatActivity() {
 
     private fun updateTotalPrice() {
         val total = cartItems.sumOf { it.newPrice }
-        checkoutButton.text = String.format("DO KASY • %.2f zł", total)
+        checkoutButton.text = String.format("TO CASH • %.2f zł", total)
     }
 }

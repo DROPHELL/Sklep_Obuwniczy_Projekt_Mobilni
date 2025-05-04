@@ -15,7 +15,7 @@ object CheckoutDialog {
         onConfirm: (address: String, card: String) -> Unit
     ) {
         if (addresses.isEmpty() || cards.isEmpty()) {
-            Toast.makeText(context, "Brak zapisanych adresów lub kart", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "No saved addresses or cards", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -23,7 +23,7 @@ object CheckoutDialog {
         val addressSpinner = view.findViewById<Spinner>(R.id.addressSpinner)
         val cardSpinner = view.findViewById<Spinner>(R.id.cardSpinner)
 
-        // Адаптери для списків
+
         val addressAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, addresses)
         val cardAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, cards)
 
@@ -31,14 +31,14 @@ object CheckoutDialog {
         cardSpinner.adapter = cardAdapter
 
         AlertDialog.Builder(context)
-            .setTitle("Potwierdź zamówienie")
+            .setTitle("Confirm order")
             .setView(view)
-            .setPositiveButton("Zamawiam") { _, _ ->
+            .setPositiveButton("Ordering") { _, _ ->
                 val selectedAddress = addressSpinner.selectedItem.toString()
                 val selectedCard = cardSpinner.selectedItem.toString()
                 onConfirm(selectedAddress, selectedCard)
             }
-            .setNegativeButton("Anuluj", null)
+            .setNegativeButton("Cancel", null)
             .show()
     }
 }

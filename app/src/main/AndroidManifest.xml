@@ -13,32 +13,27 @@
         android:theme="@style/Theme.WebSite"
         tools:targetApi="31">
 
-        <!-- Екран реєстрації -->
+
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
 
-        <!-- Головний екран -->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
 
-        <!-- Екран пошуку -->
         <activity
             android:name=".SearchActivity"
             android:exported="true" />
 
-        <!-- Екран кошика -->
         <activity
             android:name=".CartActivity"
             android:exported="true" />
 
-        <!-- Екран профілю -->
         <activity
             android:name=".ProfileActivity"
             android:exported="true" />
 
-        <!-- Екран гаманця -->
         <activity
             android:name=".WalletActivity"
             android:exported="true" />
@@ -56,9 +51,6 @@
             android:name=".CheckoutActivity"
             android:exported="true" />
 
-
-
-        <!-- Екран логіну -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">

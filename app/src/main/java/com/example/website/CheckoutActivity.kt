@@ -35,7 +35,7 @@ class CheckoutActivity : AppCompatActivity() {
 
         val session = SessionManager(this)
 
-        // 🟢 Автоматичне заповнення, якщо дані збережені
+
         session.getFullAddress()?.let { address ->
             streetEditText.setText(address.street)
             cityEditText.setText(address.city)
@@ -45,11 +45,11 @@ class CheckoutActivity : AppCompatActivity() {
         }
 
         session.getFullCard()?.let { card ->
-            // Не підставляємо номер для безпеки
+
             expiryEditText.setText(card.expiry)
         }
 
-        // ✅ Обробка натиснення кнопки "Підтвердити"
+
         confirmButton.setOnClickListener {
             val street = streetEditText.text.toString().trim()
             val city = cityEditText.text.toString().trim()
@@ -63,26 +63,26 @@ class CheckoutActivity : AppCompatActivity() {
             if (street.isEmpty() || city.isEmpty() || state.isEmpty() || zip.isEmpty()
                 || country.isEmpty() || cardNumber.isEmpty() || cvv.isEmpty() || expiry.isEmpty()
             ) {
-                Toast.makeText(this, "Wprowadź wszystkie dane", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Enter all data", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // 💾 Зберігаємо повну адресу і картку
+
             val address = FullAddress(street, city, country, zip, state)
             val card = FullCard(cardNumber, cvv, expiry)
 
             session.saveFullAddress(address)
             session.saveFullCard(card)
 
-            // 🧹 Очищення кошика
+
             ProductData.clearCart()
 
-            Toast.makeText(this, "Zamówienie złożone!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Order placed!", Toast.LENGTH_LONG).show()
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
 
-        // 🔙 Назад
+
         backButton.setOnClickListener {
             finish()
         }
