@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/shoe_placeholder" />
+            android:background="@drawable/selected_borde" />
 
         <TextView
             android:id="@+id/productName"
@@ -38,25 +38,48 @@
             android:gravity="center" />
 
         <TextView
-            android:id="@+id/productOldPrice"
+            android:id="@+id/productPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="299.00 zł"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="12sp"
-            android:fontFamily="@font/poppins_regular"
-            android:layout_marginTop="4dp" />
-
-        <TextView
-            android:id="@+id/productNewPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="149.00 zł"
+            android:text="129.00 zł"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="14sp"
             android:fontFamily="@font/poppins_regular"
             android:layout_marginTop="2dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp">
+
+            <ImageButton
+                android:id="@+id/cartButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/black_round_background"
+                android:src="@drawable/ic_cart_vector"
+                android:scaleType="centerInside"
+                android:tint="@android:color/white"
+                android:contentDescription="Add to Cart" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/moreButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_more_vert"
+                android:scaleType="centerInside"
+                android:tint="@color/black"
+                android:contentDescription="More Options" />
+        </LinearLayout>
 
     </LinearLayout>
 

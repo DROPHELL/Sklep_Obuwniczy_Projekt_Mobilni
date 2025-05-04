@@ -20,8 +20,8 @@ object ProductData {
     private var cart = mutableSetOf<Product>()
     private var sessionManager: SessionManager? = null
 
-    fun init(context: Context, userId: String) {
-        sessionManager = SessionManager(context, userId)
+    fun init(context: Context) {
+        sessionManager = SessionManager(context)
         favorites = sessionManager!!.getFavorites().toMutableSet()
         cart = sessionManager!!.getCart().toMutableSet()
     }
@@ -56,6 +56,12 @@ object ProductData {
     fun isInCart(product: Product): Boolean = cart.contains(product)
     fun getCart(): List<Product> = cart.toList()
 
+    fun clearCart() {
+        cart.clear()
+        sessionManager?.saveCart(emptyList())
+    }
+
+    // Очистити все
     fun clearAll() {
         favorites.clear()
         cart.clear()

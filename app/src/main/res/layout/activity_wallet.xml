@@ -39,7 +39,7 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_regular"
-            android:text="Wallet Balance: $0.00"
+            android:text="Wallet"
             android:layout_marginTop="8dp"
             android:layout_gravity="center"/>
 

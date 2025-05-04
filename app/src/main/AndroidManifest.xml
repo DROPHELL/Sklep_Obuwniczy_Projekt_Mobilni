@@ -52,6 +52,10 @@
         <activity
             android:name=".AddressActivity"
             android:exported="true"/>
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="true" />
+
 
 
         <!-- Екран логіну -->

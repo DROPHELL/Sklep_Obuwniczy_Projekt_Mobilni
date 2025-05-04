@@ -59,31 +59,6 @@
             android:paddingEnd="12dp"
             android:breakStrategy="simple" />
 
-
-        <!-- 👟 Shoe size -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Shoe Size:"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginEnd="12dp" />
-
-            <Spinner
-                android:id="@+id/shoeSizeSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:spinnerMode="dropdown" />
-        </LinearLayout>
-
         <!-- 📦 Delivery Address button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addressButton"

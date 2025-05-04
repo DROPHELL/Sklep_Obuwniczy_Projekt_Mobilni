@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Кнопка Назад -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="start"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Wróć" />
+
+        <!-- Заголовок -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_regular" />
+
+        <!-- Вулиця -->
+        <EditText
+            android:id="@+id/streetEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Street Address"
+            android:background="@drawable/button_border"
+            android:padding="12dp"
+            android:layout_marginTop="16dp" />
+
+        <!-- Місто -->
+        <EditText
+            android:id="@+id/cityEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="City"
+            android:background="@drawable/button_border"
+            android:padding="12dp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Штат -->
+        <EditText
+            android:id="@+id/stateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="State"
+            android:background="@drawable/button_border"
+            android:padding="12dp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Поштовий індекс -->
+        <EditText
+            android:id="@+id/zipEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Zip Code"
+            android:background="@drawable/button_border"
+            android:padding="12dp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Країна -->
+        <EditText
+            android:id="@+id/countryEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Country"
+            android:background="@drawable/button_border"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Баланс / заголовок -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Karta płatnicza"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular" />
+
+        <!-- Номер картки -->
+        <EditText
+            android:id="@+id/cardNumberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Card Number"
+            android:inputType="number"
+            android:background="@drawable/button_border"
+            android:padding="12dp"
+            android:layout_marginTop="12dp" />
+
+        <!-- CVV -->
+        <EditText
+            android:id="@+id/cvvEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CVV"
+            android:inputType="numberPassword"
+            android:background="@drawable/button_border"
+            android:padding="12dp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Дата закінчення -->
+        <EditText
+            android:id="@+id/expiryEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="MM/YY"
+            android:background="@drawable/button_border"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Кнопка підтвердження -->
+        <Button
+            android:id="@+id/confirmButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Złóż zamówienie"
+            android:backgroundTint="@color/black"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/poppins_regular" />
+
+    </LinearLayout>
+</ScrollView>
