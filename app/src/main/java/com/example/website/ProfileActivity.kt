@@ -20,7 +20,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        // Пошук елементів
+
         backButton = findViewById(R.id.backButton)
         emailTextView = findViewById(R.id.emailTextView)
         nameTextView = findViewById(R.id.nameTextView)
@@ -36,7 +36,7 @@ class ProfileActivity : AppCompatActivity() {
         nameTextView.text = "Name: $name"
         emailTextView.text = "Email Address: $email"
 
-        // Кнопка назад
+
         backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("tab", "home")
@@ -44,17 +44,17 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
-        // Перехід до гаманця
+
         walletButton.setOnClickListener {
             startActivity(Intent(this, WalletActivity::class.java))
         }
 
-        // Перехід до адрес
+
         addressButton.setOnClickListener {
             startActivity(Intent(this, AddressActivity::class.java))
         }
 
-        // Вихід із акаунта
+
         logoutButton.setOnClickListener {
             sharedPreferences.edit().clear().putBoolean("isLoggedIn", false).apply()
             val intent = Intent(this, LoginActivity::class.java)
@@ -63,7 +63,7 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
-        // Нижнє меню
+
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_home -> {

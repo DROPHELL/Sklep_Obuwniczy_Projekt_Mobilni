@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingBottom="80dp"> <!-- щоб місце було для меню -->
+        android:paddingBottom="80dp">
 
-        <!-- Верхня панель -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Koszyk"
+                android:text="Cart"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -40,7 +40,7 @@
                 android:layout_marginStart="16dp" />
         </LinearLayout>
 
-        <!-- RecyclerView -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cartRecyclerView"
             android:layout_width="match_parent"
@@ -49,14 +49,14 @@
             android:clipToPadding="false"
             android:paddingBottom="16dp" />
 
-        <!-- Кнопка DO KASY -->
+
         <Button
             android:id="@+id/checkoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:backgroundTint="@color/black"
-            android:text="DO KASY"
+            android:text="TO CASH"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -65,7 +65,7 @@
             android:textAllCaps="false" />
     </LinearLayout>
 
-    <!-- Нижнє меню -->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"

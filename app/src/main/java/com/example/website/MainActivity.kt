@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Ініціалізуємо ProductData (тепер без userId)
         ProductData.init(applicationContext)
 
         setContentView(R.layout.activity_main)

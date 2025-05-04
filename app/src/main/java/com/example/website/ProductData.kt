@@ -61,7 +61,7 @@ object ProductData {
         sessionManager?.saveCart(emptyList())
     }
 
-    // Очистити все
+
     fun clearAll() {
         favorites.clear()
         cart.clear()

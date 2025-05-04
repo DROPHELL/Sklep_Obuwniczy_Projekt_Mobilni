@@ -41,7 +41,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
         selectedProduct = intent.getSerializableExtra("product") as? Product
 
-        // ➔ Взяти розмір з профілю автоматично
+
         val sessionManager = SessionManager(this)
         selectedSize = sessionManager.getShoeSize()
 
@@ -53,18 +53,18 @@ class ProductDetailActivity : AppCompatActivity() {
             productPrice.text = "Cena: %.2f zł".format(product.newPrice)
 
             addThumbnails(product)
-            addSizeOptions() // Додаємо розміри
+            addSizeOptions()
             updateFavoriteIcon()
         }
 
         buyButton.setOnClickListener {
             selectedProduct?.let { product ->
                 if (selectedSize == null) {
-                    Toast.makeText(this, "Wybierz rozmiar!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Choose your size!", Toast.LENGTH_SHORT).show()
                 } else {
                     product.selectedSize = selectedSize
                     ProductData.addToCart(product)
-                    Toast.makeText(this, "Dodano do koszyka!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Added to cart!", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, CartActivity::class.java))
                     finish()
                 }
@@ -75,10 +75,10 @@ class ProductDetailActivity : AppCompatActivity() {
             selectedProduct?.let { product ->
                 if (ProductData.isFavorite(product)) {
                     ProductData.removeFromFavorites(product)
-                    Toast.makeText(this, "Usunięto z ulubionych", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Removed from favorites", Toast.LENGTH_SHORT).show()
                 } else {
                     ProductData.addToFavorites(product)
-                    Toast.makeText(this, "Dodano do ulubionych!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Added to favorites!", Toast.LENGTH_SHORT).show()
                 }
                 updateFavoriteIcon()
             }
@@ -128,7 +128,7 @@ class ProductDetailActivity : AppCompatActivity() {
             }
             sizeContainer.addView(button)
 
-            // Якщо розмір співпадає з збереженим, підсвічуємо
+
             if (size == selectedSize) {
                 highlightSelectedSize(button)
             }

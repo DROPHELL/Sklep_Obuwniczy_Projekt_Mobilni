@@ -13,7 +13,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val DATABASE_NAME = "BidBoots.db"
         private const val DATABASE_VERSION = 1
 
-        // Таблиця користувачів
+
         const val TABLE_USERS = "users"
         const val COLUMN_ID = "id"
         const val COLUMN_FIRST_NAME = "first_name"
@@ -21,7 +21,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val COLUMN_EMAIL = "email"
         const val COLUMN_PASSWORD = "password"
 
-        // Таблиця гаманця (Wallet)
+
         const val TABLE_WALLET = "wallet"
         const val COLUMN_WALLET_ID = "wallet_id"
         const val COLUMN_WALLET_EMAIL = "email"
@@ -58,7 +58,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         onCreate(db)
     }
 
-    // ✅ Додаємо користувача в базу даних
+
     fun addUser(firstName: String, lastName: String, email: String, password: String): Boolean {
         if (checkEmailExists(email)) {
             Log.e("DatabaseHelper", "User with email $email already exists")
@@ -87,7 +87,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
     }
 
-    // ✅ Перевіряємо, чи користувач існує (email + пароль)
+
     fun checkUser(email: String, password: String): Boolean {
         val db = readableDatabase
         val query = "SELECT * FROM $TABLE_USERS WHERE $COLUMN_EMAIL = ? AND $COLUMN_PASSWORD = ?"
@@ -98,7 +98,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return exists
     }
 
-    // ✅ Перевіряємо, чи email вже існує
+
     fun checkEmailExists(email: String): Boolean {
         val db = readableDatabase
         val query = "SELECT * FROM $TABLE_USERS WHERE $COLUMN_EMAIL = ?"
@@ -109,7 +109,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return exists
     }
 
-    // ✅ Отримуємо користувача за email
+
     fun getUserByEmail(email: String): User? {
         val db = readableDatabase
         val cursor: Cursor? = db.query(
@@ -135,7 +135,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }.also { cursor?.close(); db.close() }
     }
 
-    // ✅ Оновлення даних користувача
+
     fun updateUser(email: String, firstName: String, lastName: String, password: String): Boolean {
         val db = writableDatabase
         val values = ContentValues().apply {
@@ -155,7 +155,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
     }
 
-    // ✅ Створення гаманця при реєстрації користувача
+
     private fun createWalletForUser(email: String): Boolean {
         val db = writableDatabase
         val values = ContentValues().apply {
@@ -173,7 +173,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
     }
 
-    // ✅ Оновлення балансу гаманця
+
     fun saveWalletBalance(email: String, balance: Float) {
         val db = writableDatabase
         val values = ContentValues().apply {
@@ -189,7 +189,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
     }
 
-    // ✅ Отримання балансу гаманця
+
     fun getWalletBalance(email: String): Float {
         val db = readableDatabase
         val cursor = db.rawQuery("SELECT $COLUMN_BALANCE FROM $TABLE_WALLET WHERE $COLUMN_WALLET_EMAIL = ?", arrayOf(email))

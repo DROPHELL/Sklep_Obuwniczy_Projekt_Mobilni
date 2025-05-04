@@ -8,7 +8,7 @@
     android:gravity="center"
     android:background="@color/white">
 
-    <!-- Логотип BIDBoots -->
+
     <TextView
         android:id="@+id/logoText"
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         android:fontFamily="@font/poppins_regular"
         android:layout_marginBottom="32dp" />
 
-    <!-- Поле для Email -->
+
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true" />
 
-    <!-- Поле для Пароля -->
+
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true" />
 
-    <!-- Кнопка входу -->
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
@@ -67,7 +67,7 @@
         style="@style/Widget.Material3.Button"
         android:layout_marginBottom="16dp" />
 
-    <!-- Перехід до реєстрації -->
+
     <TextView
         android:id="@+id/signUpText"
         android:layout_width="wrap_content"

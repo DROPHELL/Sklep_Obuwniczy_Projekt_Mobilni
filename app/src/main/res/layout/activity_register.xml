@@ -7,7 +7,7 @@
     android:padding="24dp"
     android:background="@color/white">
 
-    <!-- 🔙 Кнопка назад -->
+
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="42dp"
@@ -19,7 +19,7 @@
         android:padding="8dp"
         app:tint="@color/black" />
 
-    <!-- 👟 Логотип -->
+
     <TextView
         android:id="@+id/logoText"
         android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         android:textColor="@color/black"
         android:layout_marginBottom="32dp" />
 
-    <!-- 👤 Ім’я -->
+
     <EditText
         android:id="@+id/firstNameEditText"
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
         android:paddingEnd="12dp"
         android:layout_marginBottom="16dp" />
 
-    <!-- 👤 Прізвище -->
+
     <EditText
         android:id="@+id/lastNameEditText"
         android:layout_width="match_parent"
@@ -59,7 +59,7 @@
         android:paddingEnd="12dp"
         android:layout_marginBottom="16dp" />
 
-    <!-- ✉️ Email -->
+
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
@@ -73,7 +73,7 @@
         android:paddingEnd="12dp"
         android:layout_marginBottom="16dp" />
 
-    <!-- 🔒 Пароль -->
+
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
@@ -88,7 +88,7 @@
         android:paddingEnd="12dp"
         android:layout_marginBottom="24dp" />
 
-    <!-- ✅ Кнопка реєстрації -->
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/registerButton"
         android:layout_width="match_parent"

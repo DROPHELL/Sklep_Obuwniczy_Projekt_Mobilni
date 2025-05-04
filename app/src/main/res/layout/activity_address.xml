@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- 🔙 Кнопка Назад -->
+
         <ImageButton
             android:id="@+id/backButton"
             android:layout_width="42dp"
@@ -23,18 +23,18 @@
             android:padding="8dp"
             app:tint="@color/black" />
 
-        <!-- Заголовок -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add New Address"
+            android:text="Address"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_regular"
             android:layout_marginBottom="24dp" />
 
-        <!-- Поля адреси -->
+
         <EditText
             android:id="@+id/streetEditText"
             android:layout_width="match_parent"
@@ -100,7 +100,7 @@
             android:fontFamily="@font/poppins_regular"
             android:layout_marginBottom="16dp" />
 
-        <!-- Кнопка збереження -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/saveAddressButton"
             android:layout_width="match_parent"
@@ -114,7 +114,7 @@
             android:backgroundTint="@color/black"
             android:layout_marginBottom="24dp" />
 
-        <!-- Вивід збережених адрес -->
+
         <TextView
             android:id="@+id/savedAddresses"
             android:layout_width="match_parent"

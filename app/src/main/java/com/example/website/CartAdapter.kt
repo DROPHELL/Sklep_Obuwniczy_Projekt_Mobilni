@@ -18,7 +18,7 @@ class CartAdapter(
         val cartProductImage: ImageView = view.findViewById(R.id.cartProductImage)
         val cartProductName: TextView = view.findViewById(R.id.cartProductName)
         val cartProductPrice: TextView = view.findViewById(R.id.cartProductPrice)
-        val cartProductSize: TextView = view.findViewById(R.id.cartProductSize) // ➔ додали!
+        val cartProductSize: TextView = view.findViewById(R.id.cartProductSize)
         val cartMoreButton: ImageButton = view.findViewById(R.id.cartMoreButton)
     }
 
@@ -34,11 +34,11 @@ class CartAdapter(
         holder.cartProductName.text = product.name
         holder.cartProductPrice.text = String.format("%.2f zł", product.newPrice)
 
-        // Встановлюємо розмір
+
         if (product.selectedSize != null) {
-            holder.cartProductSize.text = "Rozmiar: ${product.selectedSize}"
+            holder.cartProductSize.text = "Size: ${product.selectedSize}"
         } else {
-            holder.cartProductSize.text = "Rozmiar: -"
+            holder.cartProductSize.text = "Size: -"
         }
 
         val context = holder.itemView.context

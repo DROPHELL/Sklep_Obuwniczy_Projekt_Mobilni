@@ -41,7 +41,7 @@ class ProductAdapter(
 
         val context = holder.itemView.context
         val imageResId = context.resources.getIdentifier(
-            product.imageNameBase + "1", // наприклад: run1, spizike1
+            product.imageNameBase + "1",
             "drawable",
             context.packageName
         )

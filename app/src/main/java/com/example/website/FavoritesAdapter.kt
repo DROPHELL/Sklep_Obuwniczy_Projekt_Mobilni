@@ -88,14 +88,14 @@ class FavoritesAdapter(
 
         AlertDialog.Builder(context)
             .setView(dialogView)
-            .setPositiveButton("Dodaj") { _, _ ->
+            .setPositiveButton("Add") { _, _ ->
                 val selectedSize = sizes[numberPicker.value]
                 product.selectedSize = selectedSize
                 ProductData.addToCart(product)
-                Toast.makeText(context, "Dodano do koszyka (rozmiar $selectedSize)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Added to cart (size $selectedSize)", Toast.LENGTH_SHORT).show()
                 onAddToCartClick(product)
             }
-            .setNegativeButton("Anuluj", null)
+            .setNegativeButton("Cancel", null)
             .show()
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- Основний контент -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,7 +14,7 @@
         android:padding="16dp"
         android:layout_gravity="top">
 
-        <!-- Заголовок -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             android:layout_marginBottom="12dp"
             android:layout_gravity="center_horizontal" />
 
-        <!-- Список товарів -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productRecyclerView"
             android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             android:paddingBottom="80dp" />
     </LinearLayout>
 
-    <!-- Нижня навігація -->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
